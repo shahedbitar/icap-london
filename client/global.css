@@ -1,0 +1,196 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700;800;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Great+Vibes:wght@400&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 36 44% 92%;
+    --foreground: 25 58% 20%;
+
+    --card: 36 50% 95%;
+    --card-foreground: 25 58% 20%;
+
+    --popover: 36 50% 95%;
+    --popover-foreground: 25 58% 20%;
+
+    --primary: 25 65% 35%;
+    --primary-foreground: 36 50% 95%;
+
+    --secondary: 36 40% 80%;
+    --secondary-foreground: 25 58% 20%;
+
+    --muted: 36 35% 85%;
+    --muted-foreground: 25 40% 40%;
+
+    --accent: 42 85% 50%;
+    --accent-foreground: 25 58% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 36 50% 95%;
+
+    --border: 25 45% 75%;
+    --input: 36 50% 90%;
+    --ring: 25 65% 35%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 36 50% 95%;
+
+    --sidebar-foreground: 25 58% 20%;
+
+    --sidebar-primary: 25 65% 35%;
+
+    --sidebar-primary-foreground: 36 50% 95%;
+
+    --sidebar-accent: 42 85% 50%;
+
+    --sidebar-accent-foreground: 25 58% 20%;
+
+    --sidebar-border: 25 45% 75%;
+
+    --sidebar-ring: 42 85% 50%;
+  }
+
+  .dark {
+    --background: 25 58% 20%;
+    --foreground: 36 50% 95%;
+
+    --card: 25 65% 30%;
+    --card-foreground: 36 50% 95%;
+
+    --popover: 25 58% 20%;
+    --popover-foreground: 36 50% 95%;
+
+    --primary: 42 85% 50%;
+    --primary-foreground: 25 58% 20%;
+
+    --secondary: 25 45% 40%;
+    --secondary-foreground: 36 50% 95%;
+
+    --muted: 25 40% 35%;
+    --muted-foreground: 36 50% 80%;
+
+    --accent: 42 85% 50%;
+    --accent-foreground: 25 58% 20%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 36 50% 95%;
+
+    --border: 25 45% 45%;
+    --input: 25 65% 30%;
+    --ring: 42 85% 50%;
+    --sidebar-background: 25 58% 20%;
+    --sidebar-foreground: 36 50% 95%;
+    --sidebar-primary: 42 85% 50%;
+    --sidebar-primary-foreground: 25 58% 20%;
+    --sidebar-accent: 25 45% 40%;
+    --sidebar-accent-foreground: 36 50% 95%;
+    --sidebar-border: 25 45% 45%;
+    --sidebar-ring: 42 85% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  .script-font {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #f4e4c1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .serif-text {
+    font-family: 'Crimson Text', serif;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  .ornamental-border {
+    border: 3px double rgba(187, 175, 158, 1);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px #5a3d28;
+    background: linear-gradient(135deg, #fef5e7 0%, #faf0e6 100%);
+    position: relative;
+  }
+
+  .ornamental-border::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    background: #432616;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  .ornamental-border::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: #432616;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  /* Decorative divider */
+  .divider-ornamental {
+    height: 3px;
+    background: repeating-linear-gradient(
+      90deg,
+      #5d4e37 0px,
+      #5d4e37 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    margin: 1.5rem 0;
+  }
+
+  /* Enhanced button styles */
+  button {
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Link styling */
+  a {
+    transition: color 0.2s ease;
+  }
+}
