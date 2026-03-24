@@ -53,7 +53,7 @@ export default function Index() {
         className="mx-4 md:mx-0 px-4 md:px-6 py-4 text-center border-4 shadow-2xl md:relative md:-top-16 md:max-w-7xl md:mx-auto"
         style={{ background: 'linear-gradient(to right, #432616, #5a3d28, #432616)', borderColor: '#5a3d28', borderStyle: 'double', zIndex: 10 }}
       >
-        <p className="script-font mb-1 text-sm md:text-base" style={{ color: 'rgba(219,209,198,1)', textShadow: '1px 1px 3px rgba(0,0,0,1)' }}>
+        <p className="script-font mb-1" style={{ color: 'rgba(219,209,198,1)', textShadow: '1px 1px 3px rgba(0,0,0,1)' }}>
           Explore our heritage through historical documents, photos and records
         </p>
         <img
