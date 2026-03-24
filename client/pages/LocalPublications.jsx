@@ -1,22 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import PageLayout from '../components/PageLayout';
 
-function Breadcrumb({ crumbs }) {
-  const navigate = useNavigate();
-  return (
-    <nav className="mb-4 text-sm" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
-      {crumbs.map((c, i) => (
-        <span key={c.label}>
-          {i > 0 && <span className="mx-1">›</span>}
-          {c.to
-            ? <button onClick={() => navigate(c.to)} className="underline hover:opacity-75 transition" style={{ color: '#2c6e8a' }}>{c.label}</button>
-            : <span style={{ color: '#bbaf9e', fontWeight: 600 }}>{c.label}</span>}
-        </span>
-      ))}
-    </nav>
-  );
-}
-
 const publications = [
   {
     id: 'abruzzo',
@@ -52,52 +36,59 @@ const publications = [
 
 export default function LocalPublications() {
   const navigate = useNavigate();
+
   return (
     <PageLayout activePage="LocalPublications" initialOpen={{ Media: true, LocalPub: true }}>
+      <div className="ornamental-border bg-[#f5f0e8] p-8">
 
-      {/* Title bar */}
-      <div className="px-6 py-4 mb-1 border-4" style={{ background: 'linear-gradient(to right, #432616, #5a3d28)', borderColor: '#5a3d28', borderStyle: 'double' }}>
-        <Breadcrumb crumbs={[{ label: 'Home', to: '/' }, { label: 'Media', to: '/media' }, { label: 'Local Publications' }]} />
-        <h2 className="text-3xl font-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#f5f0e8' }}>
+        {/* Breadcrumb */}
+        <nav className="mb-4 text-sm" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
+          <button onClick={() => navigate('/')} className="underline hover:opacity-75 transition" style={{ color: '#2c6e8a' }}>Home</button>
+          <span className="mx-1">›</span>
+          <button onClick={() => navigate('/media')} className="underline hover:opacity-75 transition" style={{ color: '#2c6e8a' }}>Media</button>
+          <span className="mx-1">›</span>
+          <span style={{ color: '#432616' }}>Local Publications</span>
+        </nav>
+
+        {/* Title */}
+        <h2 className="text-3xl font-bold mb-6" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>
           Local Publications
         </h2>
-      </div>
 
-      {/* Quick links */}
-      <div className="ornamental-border bg-[#f5f0e8] px-6 py-4 mb-1">
-        <ul className="flex flex-wrap gap-x-6 gap-y-1">
+        {/* Quick links */}
+        <ul className="space-y-2 mb-8">
           {publications.map((pub) => (
             <li key={pub.id}>
               <button
                 onClick={() => navigate(pub.route)}
-                className="underline font-semibold transition hover:opacity-75"
-                style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}
+                className="underline hover:opacity-75 transition text-left"
+                style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}
               >
                 {pub.title}
               </button>
             </li>
           ))}
         </ul>
-      </div>
 
-      {/* Disclaimer sections */}
-      <div className="space-y-1">
-        {publications.map((pub) => (
-          <div key={pub.id} id={pub.id} className="ornamental-border bg-[#f5f0e8] px-6 py-6">
-            <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', color: '#432616' }}>
-              {pub.disclaimerTitle}
-            </h3>
-            <div className="space-y-3">
-              {pub.disclaimers.map((text, j) => (
-                <p key={j} className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}>
-                  {text}
-                </p>
-              ))}
+        {/* Disclaimers */}
+        <div className="space-y-8">
+          {publications.map((pub) => (
+            <div key={pub.id} id={pub.id}>
+              <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', color: '#432616' }}>
+                {pub.disclaimerTitle}
+              </h3>
+              <div className="space-y-4">
+                {pub.disclaimers.map((text, j) => (
+                  <p key={j} className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}>
+                    {text}
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
+      </div>
     </PageLayout>
   );
 }

@@ -36,7 +36,7 @@ export default function AbruzzoCanada() {
       <div className="ornamental-border bg-[#f5f0e8] px-6 py-8">
         <div className="flex flex-col sm:flex-row gap-8 items-start">
           <img
-            src="/abruzzo-canada.jpg"
+            src={`${import.meta.env.BASE_URL}abruzzo-canada.jpg`}
             alt="Abruzzo Canada cover"
             className="shadow-lg mx-auto sm:mx-0"
             style={{ width: '220px', borderRadius: '2px' }}
