@@ -29,8 +29,8 @@ function NavBtn({ label, indent = 0, expandable, expanded, onClick, highlight, c
   );
 }
 
-export default function Sidebar({ activePage }) {
-  const [open, setOpen] = useState({});
+export default function Sidebar({ activePage, initialOpen = {} }) {
+  const [open, setOpen] = useState(initialOpen);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
@@ -137,8 +137,10 @@ export default function Sidebar({ activePage }) {
 
           <NavBtn label="Welcome" highlight={activePage === 'Welcome'} onClick={() => navigate('/')} />
 
-          <NavBtn label="Media" expandable expanded={open.Media} onClick={() => toggle('Media')}>
-            <NavBtn label="Local Publications" indent={1} expandable expanded={open.LocalPub} onClick={() => toggle('LocalPub')}>
+          <NavBtn label="Media" expandable expanded={open.Media} highlight={activePage === 'Media'}
+            onClick={() => { toggle('Media'); navigate('/media'); }}>
+            <NavBtn label="Local Publications" indent={1} expandable expanded={open.LocalPub} highlight={activePage === 'LocalPublications'}
+              onClick={() => { toggle('LocalPub'); navigate('/media/local-publications'); }}>
               {['Abruzzo Canada', 'Corriere Peligno', 'Valle Peligna'].map((p) => (
                 <NavBtn key={p} label={p} indent={2} onClick={() => {}} />
               ))}
