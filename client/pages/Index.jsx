@@ -1,11 +1,18 @@
 import { ChevronDown, Search, FileText, Users, Calendar, PhoneIcon } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Index() {
   const [expandedSection, setExpandedSection] = useState(null);
+  const navigate = useNavigate();
 
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
+  };
+
+  const handleNavClick = (item) => {
+    if (item === 'Contact') { navigate('/contact'); return; }
+    toggleSection(item);
   };
 
   return (
@@ -102,7 +109,7 @@ export default function Index() {
                 {['Welcome', 'Media', 'People and their Stories', 'Events and Association', 'Interviews', 'Contact'].map((item) => (
                   <button
                     key={item}
-                    onClick={() => toggleSection(item)}
+                    onClick={() => handleNavClick(item)}
                     className="w-full flex items-center justify-between text-left transition py-3 px-2 last:border-b-0 group"
                     style={{ color: '#432616', borderBottom: '1px solid rgba(255, 255, 255, 1)' }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = '#5a3d28'; e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 1)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 1)'; }}
