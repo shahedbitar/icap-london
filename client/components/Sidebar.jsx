@@ -17,7 +17,7 @@ function NavBtn({ label, indent = 0, expandable, expanded, onClick, highlight, c
         onMouseEnter={(e) => { if (!highlight) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,1)'; }}
         onMouseLeave={(e) => { if (!highlight) e.currentTarget.style.backgroundColor = 'transparent'; }}
       >
-        <span className="font-semibold text-sm">» {label}</span>
+        <span className="text-sm">» {label}</span>
         {expandable && (
           expanded
             ? <XCircle size={16} className="flex-shrink-0" style={{ color: '#432616' }} />
@@ -73,7 +73,7 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
   return (
     <>
       {/* Search Box */}
-      <div className="ornamental-border bg-yellow-50 p-5">
+      <div className="ornamental-border bg-[#f5f0e8] p-5">
         <h2 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: 'rgba(0,0,0,1)' }}>
           SEARCH THE ARCHIVES
         </h2>
@@ -129,7 +129,7 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
       </div>
 
       {/* Explore Box */}
-      <div className="ornamental-border bg-yellow-50 p-5">
+      <div className="ornamental-border bg-[#f5f0e8] p-5">
         <h2 className="text-xl font-bold mb-5" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>
           EXPLORE
         </h2>
