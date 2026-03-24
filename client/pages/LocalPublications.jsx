@@ -21,6 +21,7 @@ const publications = [
   {
     id: 'abruzzo',
     title: 'Abruzzo Canada',
+    image: '/abruzzo-canada.jpg',
     disclaimerTitle: 'Disclaimer Abruzzo Canada',
     disclaimers: [
       "The periodical Abruzzo Canada. Rassegna Periodica della Confederazione Abruzzese is hosted by the Icap-London webpage, in fair dealing and with the purpose of preserving the stories and the voices of the Italian-Canadian community of London, thus contributing to documenting the history of Canada at large. It is posted with permission of it's director's, Sestino Casasanta, legal heir.",
@@ -30,6 +31,7 @@ const publications = [
   {
     id: 'corriere',
     title: 'Corriere Peligno',
+    image: '/corriere-peligno.jpg',
     disclaimerTitle: 'Disclaimer Corriere Peligno',
     disclaimers: [
       "The Corriere Peligno is hosted by the Icap-London webpage, in fair dealing and with the purpose of preserving the stories and the voices of the Italian-Canadian community of London, thus contributing to documenting the history of Canada at large. It is posted with permission of it's director, Sestino Casasanta, legal heir.",
@@ -39,6 +41,7 @@ const publications = [
   {
     id: 'valle',
     title: 'Valle Peligna',
+    image: '/valle-peligna.jpg',
     disclaimerTitle: 'Disclaimer Valle Peligna',
     disclaimers: [
       "The Valle Peligna is hosted by the Icap-London webpage, in fair dealing and with the purpose of preserving the stories and the voices of the Italian-Canadian community of London, thus contributing to documenting the history of Canada at large.",
@@ -59,9 +62,9 @@ export default function LocalPublications() {
         </h2>
       </div>
 
-      {/* Quick links box */}
-      <div className="ornamental-border bg-[#f5f0e8] px-6 py-5 mb-1">
-        <ul className="space-y-2">
+      {/* Quick links */}
+      <div className="ornamental-border bg-[#f5f0e8] px-6 py-4 mb-1">
+        <ul className="flex flex-wrap gap-x-6 gap-y-1">
           {publications.map((pub) => (
             <li key={pub.id}>
               <a
@@ -79,20 +82,35 @@ export default function LocalPublications() {
       {/* One box per publication */}
       <div className="space-y-1">
         {publications.map((pub) => (
-          <div key={pub.id} id={pub.id} className="ornamental-border bg-[#f5f0e8] px-6 py-5">
-            <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', color: '#432616' }}>
-              {pub.disclaimerTitle}
-            </h3>
-            <div className="space-y-4">
-              {pub.disclaimers.map((text, j) => (
-                <p
-                  key={j}
-                  className="leading-relaxed"
-                  style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}
-                >
-                  {text}
-                </p>
-              ))}
+          <div key={pub.id} id={pub.id} className="ornamental-border bg-[#f5f0e8] px-6 py-6">
+            <div className="flex flex-col sm:flex-row gap-6">
+              {/* Cover image */}
+              <div className="flex-shrink-0 mx-auto sm:mx-0">
+                <img
+                  src={pub.image}
+                  alt={`${pub.title} cover`}
+                  className="shadow-md"
+                  style={{ width: '140px', objectFit: 'cover', borderRadius: '2px' }}
+                />
+              </div>
+
+              {/* Disclaimer text */}
+              <div className="flex-1">
+                <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', color: '#432616' }}>
+                  {pub.disclaimerTitle}
+                </h3>
+                <div className="space-y-3">
+                  {pub.disclaimers.map((text, j) => (
+                    <p
+                      key={j}
+                      className="leading-relaxed"
+                      style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616', fontStyle: 'italic' }}
+                    >
+                      {text}
+                    </p>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         ))}
