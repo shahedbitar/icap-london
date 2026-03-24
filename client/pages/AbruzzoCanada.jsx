@@ -5,7 +5,7 @@ const issues = {
   '2000': [
     {
       label: 'Winter 2000',
-      image: 'AC_Winter2000.jpg',
+      pdf: 'AC_Winter2000.pdf',
       metadata: {
         title: 'Winter 2000',
         creator: null,
@@ -16,7 +16,7 @@ const issues = {
     },
     {
       label: 'Summer 2000',
-      image: 'AC_Summer2000.jpg',
+      pdf: 'AC_Summer2000.pdf',
       metadata: {
         title: 'Summer 2000',
         creator: 'Bella Dong',
@@ -27,7 +27,17 @@ const issues = {
     },
   ],
   '2001': [
-    { label: 'Winter - Spring 2001', image: null },
+    {
+      label: 'Winter - Spring 2001',
+      pdf: 'AC_SpringWinter2001.pdf',
+      metadata: {
+        title: 'Winter - Spring 2001',
+        creator: null,
+        type: 'Newspaper',
+        collection: 'Abruzzo Canada (Newspapers)',
+        citation: null,
+      },
+    },
   ],
 };
 
@@ -43,7 +53,7 @@ export default function AbruzzoCanada() {
         {/* Cover + info */}
         <div className="flex flex-col sm:flex-row gap-8 mb-8">
           <img
-            src={`${base}AC_Winter2000.jpg`}
+            src={`${base}AC_main.jpg`}
             alt="Abruzzo Canada cover"
             className="shadow-lg flex-shrink-0 mx-auto sm:mx-0"
             style={{ width: '200px', borderRadius: '2px' }}
@@ -79,7 +89,7 @@ export default function AbruzzoCanada() {
               <ul className="space-y-2">
                 {items.map((issue) => (
                   <li key={issue.label}>
-                    {issue.image ? (
+                    {issue.pdf ? (
                       <button
                         onClick={() => setViewing(viewing?.label === issue.label ? null : issue)}
                         className="underline hover:opacity-75 transition text-left"
@@ -106,11 +116,11 @@ export default function AbruzzoCanada() {
               <p className="font-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>{viewing.label}</p>
               <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
             </div>
-            <img
-              src={`${base}${viewing.image}`}
-              alt={viewing.label}
+            <iframe
+              src={`${base}${viewing.pdf}`}
+              title={viewing.label}
               className="w-full shadow-md mb-4"
-              style={{ borderRadius: '2px', maxHeight: '900px', objectFit: 'contain' }}
+              style={{ borderRadius: '2px', height: '900px', border: 'none' }}
             />
             {viewing.metadata && (
               <div className="p-4" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
