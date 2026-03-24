@@ -141,8 +141,12 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
             onClick={() => { toggle('Media'); navigate('/media'); }}>
             <NavBtn label="Local Publications" indent={1} expandable expanded={open.LocalPub} highlight={activePage === 'LocalPublications'}
               onClick={() => { toggle('LocalPub'); navigate('/media/local-publications'); }}>
-              {['Abruzzo Canada', 'Corriere Peligno', 'Valle Peligna'].map((p) => (
-                <NavBtn key={p} label={p} indent={2} onClick={() => {}} />
+              {[
+                { label: 'Abruzzo Canada', route: '/media/local-publications/abruzzo-canada', page: 'AbruzzoCanada' },
+                { label: 'Corriere Peligno', route: '/media/local-publications/corriere-peligno', page: 'CorreirePeligno' },
+                { label: 'Valle Peligna', route: '/media/local-publications/valle-peligna', page: 'VallePeligna' },
+              ].map((p) => (
+                <NavBtn key={p.label} label={p.label} indent={2} highlight={activePage === p.page} onClick={() => navigate(p.route)} />
               ))}
             </NavBtn>
             <NavBtn label="In the Media" indent={1} onClick={() => {}} />

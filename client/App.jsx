@@ -9,6 +9,9 @@ import Index from "./pages/Index";
 import Contact from "./pages/Contact";
 import Media from "./pages/Media";
 import LocalPublications from "./pages/LocalPublications";
+import AbruzzoCanada from "./pages/AbruzzoCanada";
+import CorreirePeligno from "./pages/CorreirePeligno";
+import VallePeligna from "./pages/VallePeligna";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +29,9 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/media" element={<Media />} />
             <Route path="/media/local-publications" element={<LocalPublications />} />
+            <Route path="/media/local-publications/abruzzo-canada" element={<AbruzzoCanada />} />
+            <Route path="/media/local-publications/corriere-peligno" element={<CorreirePeligno />} />
+            <Route path="/media/local-publications/valle-peligna" element={<VallePeligna />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
