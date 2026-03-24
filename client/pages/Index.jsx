@@ -1,19 +1,7 @@
-import { ChevronDown, Search, FileText, Users, Calendar, PhoneIcon } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Sidebar from '../components/Sidebar';
 
 export default function Index() {
-  const [expandedSection, setExpandedSection] = useState(null);
-  const navigate = useNavigate();
-
-  const toggleSection = (section) => {
-    setExpandedSection(expandedSection === section ? null : section);
-  };
-
-  const handleNavClick = (item) => {
-    if (item === 'Contact') { navigate('/contact'); return; }
-    toggleSection(item);
-  };
 
   return (
     <div className="min-h-screen bg-yellow-50" style={{ backgroundImage: 'url(https://cdn.builder.io/api/v1/image/assets%2Fddec25cc54e94f77878a49c8b0ea7d6c%2Fed0ff00c7841474d9616a78366a162f1?format=webp&width=800&height=1200)', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
@@ -101,26 +89,7 @@ export default function Index() {
             </div>
 
             {/* Explore Box */}
-            <div className="ornamental-border bg-yellow-50 p-5">
-              <h2 className="text-xl font-bold mb-5" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>
-                EXPLORE
-              </h2>
-              <nav className="space-y-0">
-                {['Welcome', 'Media', 'People and their Stories', 'Events and Association', 'Interviews', 'Contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => handleNavClick(item)}
-                    className="w-full flex items-center justify-between text-left transition py-3 px-2 last:border-b-0 group"
-                    style={{ color: '#432616', borderBottom: '1px solid rgba(255, 255, 255, 1)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = '#5a3d28'; e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 1)'; e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 1)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = '#432616'; e.currentTarget.style.backgroundColor = 'transparent'; }}
-                  >
-                    <span className="font-semibold text-sm group-hover:translate-x-1 transition">{item}</span>
-                    <ChevronDown size={16} className={`transition flex-shrink-0 ${expandedSection === item ? 'rotate-180' : ''}`} />
-                  </button>
-                ))}
-              </nav>
-            </div>
+            <Sidebar activePage="Welcome" />
           </aside>
 
           {/* Main Content */}

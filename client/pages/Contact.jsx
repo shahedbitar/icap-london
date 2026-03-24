@@ -1,22 +1,9 @@
-import { ChevronDown, Search } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Sidebar from '../components/Sidebar';
 
 export default function Contact() {
-  const [expandedSection, setExpandedSection] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
-
-  const toggleSection = (section) => {
-    setExpandedSection(expandedSection === section ? null : section);
-  };
-
-  const handleNavClick = (item) => {
-    if (item === 'Contact') return;
-    if (item === 'Welcome') { navigate('/'); return; }
-    toggleSection(item);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,31 +74,7 @@ export default function Contact() {
             </div>
 
             {/* Explore Box */}
-            <div className="ornamental-border bg-yellow-50 p-5">
-              <h2 className="text-xl font-bold mb-5" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>
-                EXPLORE
-              </h2>
-              <nav className="space-y-0">
-                {['Welcome', 'Media', 'People and their Stories', 'Events and Association', 'Interviews', 'Contact'].map((item) => (
-                  <button
-                    key={item}
-                    onClick={() => handleNavClick(item)}
-                    className="w-full flex items-center justify-between text-left transition py-3 px-2 last:border-b-0 group"
-                    style={{
-                      color: item === 'Contact' ? '#5a3d28' : '#432616',
-                      borderBottom: '1px solid rgba(255, 255, 255, 1)',
-                      backgroundColor: item === 'Contact' ? 'rgba(255,255,255,1)' : 'transparent',
-                      fontWeight: item === 'Contact' ? 700 : undefined,
-                    }}
-                    onMouseEnter={(e) => { if (item !== 'Contact') { e.currentTarget.style.color = '#5a3d28'; e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 1)'; } }}
-                    onMouseLeave={(e) => { if (item !== 'Contact') { e.currentTarget.style.color = '#432616'; e.currentTarget.style.backgroundColor = 'transparent'; } }}
-                  >
-                    <span className="font-semibold text-sm group-hover:translate-x-1 transition">{item}</span>
-                    <ChevronDown size={16} className={`transition flex-shrink-0 ${expandedSection === item ? 'rotate-180' : ''}`} />
-                  </button>
-                ))}
-              </nav>
-            </div>
+            <Sidebar activePage="Contact" />
           </aside>
 
           {/* Main Content */}
