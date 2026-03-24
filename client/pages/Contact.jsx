@@ -49,31 +49,6 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sidebar */}
           <aside className="md:col-span-1 space-y-6">
-            {/* Search Box */}
-            <div className="ornamental-border bg-yellow-50 p-5">
-              <h2 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: 'rgba(0, 0, 0, 1)' }}>
-                SEARCH THE ARCHIVES
-              </h2>
-              <label className="text-xs block mb-3 font-semibold uppercase tracking-wide" style={{ color: '#5a3d28' }}>Try keywords or phrases...</label>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  placeholder="Search archives..."
-                  className="flex-1 px-3 py-2 bg-white border-2 text-sm focus:outline-none focus:ring-2"
-                  style={{ borderColor: '#bbaf9e', borderStyle: 'double', borderRadius: '1px', '--tw-ring-color': '#432616' }}
-                />
-              </div>
-              <button
-                className="w-full font-bold transition transform hover:-translate-y-0.5 shadow-md"
-                style={{ backgroundColor: '#432616', color: '#ffffff', border: '4px groove #4e2f20', borderRadius: '1px', overflow: 'hidden', padding: '2px 0', fontFamily: 'Helvetica, sans-serif' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2a1810'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#432616'}
-              >
-                Search
-              </button>
-            </div>
-
-            {/* Explore Box */}
             <Sidebar activePage="Contact" />
           </aside>
 
@@ -84,7 +59,7 @@ export default function Contact() {
                 Contact Us
               </h2>
 
-              <p className="text-sm mb-5 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1.05rem', color: '#432616' }}>
+              <p className="leading-relaxed mb-5" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
                 We are using the ICAP London site to gather stories from our region. We provide the Interview Forms which you may open and print.
               </p>
 
@@ -97,10 +72,8 @@ export default function Contact() {
                   <li key={form}>
                     <a
                       href="#"
-                      className="text-sm underline transition"
-                      style={{ color: '#432616', fontFamily: 'Crimson Text, serif', fontSize: '1rem' }}
-                      onMouseEnter={(e) => e.currentTarget.style.color = '#2a1810'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = '#432616'}
+                      className="underline font-semibold transition hover:opacity-75"
+                      style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}
                     >
                       {form}
                     </a>
@@ -110,7 +83,7 @@ export default function Contact() {
 
               <div className="h-px mb-6" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
 
-              <p className="text-sm mb-8 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1.05rem', color: '#432616' }}>
+              <p className="leading-relaxed mb-8" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
                 How much do you know about Italian-Canadian community in London and their journeys to Canada? Would you like to share your family memories or simply come by to find out more about our mutual past? Either way, we want to hear from you! Please send us your comments and suggestions.
               </p>
 

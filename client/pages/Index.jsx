@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 
 export default function Index() {
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-yellow-50" style={{ backgroundImage: 'url(https://cdn.builder.io/api/v1/image/assets%2Fddec25cc54e94f77878a49c8b0ea7d6c%2Fed0ff00c7841474d9616a78366a162f1?format=webp&width=800&height=1200)', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
@@ -61,6 +63,7 @@ export default function Index() {
             style={{ backgroundColor: '#371e10', color: 'rgba(255, 255, 255, 1)', border: '4px double rgba(78, 48, 32, 1)', fontFamily: 'Helvetica, sans-serif' }}
             onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#371e10'; }}
             onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#371e10'; }}
+            onClick={() => document.getElementById('explore-sidebar').scrollIntoView({ behavior: 'smooth' })}
           >
             Browse Archives
           </button>
@@ -68,27 +71,7 @@ export default function Index() {
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Sidebar */}
-          <aside className="md:col-span-1 space-y-6">
-            {/* Search Box */}
-            <div className="ornamental-border bg-yellow-50 p-5">
-              <h2 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: 'rgba(0, 0, 0, 1)' }}>
-                SEARCH THE ARCHIVES
-              </h2>
-              <label className="text-xs block mb-3 font-semibold uppercase tracking-wide" style={{ color: '#5a3d28' }}>Try keywords or phrases...</label>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  placeholder="Search archives..."
-                  className="flex-1 px-3 py-2 bg-white border-2 text-sm focus:outline-none focus:ring-2"
-                  style={{ borderColor: '#bbaf9e', borderStyle: 'double', borderRadius: '1px', '--tw-ring-color': '#432616' }}
-                />
-              </div>
-              <button className="w-full font-bold transition transform hover:-translate-y-0.5 shadow-md" style={{ backgroundColor: '#432616', color: '#ffffff', border: '4px groove #4e2f20', borderRadius: '1px', overflow: 'hidden', padding: '2px 0', fontFamily: 'Helvetica, sans-serif' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2a1810'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#432616'}>
-                Search
-              </button>
-            </div>
-
-            {/* Explore Box */}
+          <aside id="explore-sidebar" className="md:col-span-1 space-y-6">
             <Sidebar activePage="Welcome" />
           </aside>
 
@@ -96,41 +79,37 @@ export default function Index() {
           <main className="md:col-span-3">
             {/* Top Info Box */}
             <div className="ornamental-border bg-yellow-50 p-7 mb-8">
-              <p className="text-sm leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1.05rem', color: '#432616' }}>
-                <strong style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1em' }}>The Italian-Canadian Archives Project</strong> is a nation-wide network of researchers and organizations that gather and digitalize oral memories as well as written and visual documentation concerning Italian-Canadians. Their arrival in this country and their deeds. We seek to write the history of Italian-Canadians and recognize their role in shaping the history of Canada.
+              <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+                <strong style={{ fontFamily: 'Playfair Display, serif' }}>The Italian-Canadian Archives Project</strong> is a nation-wide network of researchers and organizations that gather and digitalize oral memories as well as written and visual documentation concerning Italian-Canadians. Their arrival in this country and their deeds. We seek to write the history of Italian-Canadians and recognize their role in shaping the history of Canada.
               </p>
               <div className="h-px my-4" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }}></div>
-              <p className="text-xs mt-4 leading-relaxed" style={{ color: '#5a3d28' }}>
-                ICAP London is working in partnership with the <a href="#" className="text-blue-600 underline hover:text-blue-700 font-semibold">Italian-Canadian Archives Project</a>.
+              <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+                ICAP London is working in partnership with the <a href="#" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Italian-Canadian Archives Project</a>.
               </p>
             </div>
 
             {/* Our Site */}
             <div className="ornamental-border bg-yellow-50 p-7">
-              <h3 className="text-xl font-bold mb-5" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>
                 Our Site
               </h3>
-              <p className="text-sm mb-4 leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>
-                We are using the ICAP London site to gather stories from our region. Our site provides the <a href="#" className="text-blue-600 underline hover:text-blue-700 font-semibold">Internet Forms</a> which you may open and print.
+              <p className="leading-relaxed mb-4" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+                We are using the ICAP London site to gather stories from our region. Our site provides the <a href="#" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Internet Forms</a> which you may open and print.
               </p>
-              <p className="text-xs leading-relaxed" style={{ color: '#5a3d28' }}>
-                We are here to listen and help preserve your family stories. Since 2001, the ICAP London office is actively working with local communities to interview and record life stories of Italian-Canadians, especially seniors. We welcome individual, document, picture or artifact that you might want to archive for accessibility for future research through our databases.
+              <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+                We are here to listen and help preserve your family stories. Since 2001, the ICAP London office is actively working with local communities to interview and record life stories of Italian-Canadians, especially seniors. We welcome any individual, document, picture or artifact that you might want to archive for accessibility and future research through our databases.
               </p>
             </div>
 
             {/* Bottom Contact */}
             <div className="ornamental-border bg-yellow-50 p-7 mt-8">
-              <div>
-                <div>
-                  <h4 className="font-bold mb-2 text-lg" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>Get in Touch</h4>
-                  <p className="text-sm mb-4 leading-relaxed" style={{ color: '#5a3d28' }}>
-                    We would love to hear from you! Share your stories or contribute to our archives.
-                  </p>
-                  <a href="#" className="text-blue-600 hover:text-blue-700 hover:underline text-sm font-semibold transition">
-                    Click here to contact us
-                  </a>
-                </div>
-              </div>
+              <h4 className="text-xl font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', letterSpacing: '0.05em', color: '#432616' }}>Get in Touch</h4>
+              <p className="leading-relaxed mb-4" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
+                We would love to hear from you! Share your stories or contribute to our archives.
+              </p>
+              <a onClick={() => navigate('/contact')} className="underline font-semibold transition hover:opacity-75 cursor-pointer" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>
+                Click here to contact us
+              </a>
             </div>
           </main>
         </div>
