@@ -710,9 +710,9 @@ export default function CorreirePeligno() {
           Available Issues
         </h3>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 items-start">
           {Object.entries(issues).map(([year, items]) => (
-            <div key={year} className="p-4 min-w-[180px]" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', backgroundColor: 'rgba(255,255,255,0.3)' }}>
+            <div key={year} className="p-4 w-[180px]" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', backgroundColor: 'rgba(255,255,255,0.3)' }}>
               <p className="font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', color: '#432616' }}>
                 {year}
               </p>
@@ -747,7 +747,7 @@ export default function CorreirePeligno() {
               <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
             </div>
             <iframe
-              src={viewing.pdf.startsWith('http') ? viewing.pdf : `${base}${viewing.pdf}`}
+              src={viewing.pdf.startsWith('http') ? `https://docs.google.com/viewer?url=${encodeURIComponent(viewing.pdf)}&embedded=true` : `${base}${viewing.pdf}`}
               title={viewing.label}
               className="w-full shadow-md mb-4"
               style={{ borderRadius: '2px', height: '900px', border: 'none' }}
