@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import PageLayout from '../components/PageLayout';
 
 const R = 'corriere-peligno/';
@@ -671,6 +671,7 @@ const issues = {
 export default function CorreirePeligno() {
   const base = import.meta.env.BASE_URL;
   const [viewing, setViewing] = useState(null);
+  const viewerRef = useRef(null);
 
   return (
     <PageLayout activePage="CorreirePeligno" initialOpen={{ Media: true, LocalPub: true }}>
@@ -711,63 +712,69 @@ export default function CorreirePeligno() {
         </h3>
 
         <div className="flex flex-wrap gap-4 items-start">
-          {Object.entries(issues).map(([year, items]) => (
-            <div key={year} className="p-4 w-[180px]" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', backgroundColor: 'rgba(255,255,255,0.3)' }}>
-              <p className="font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', color: '#432616' }}>
-                {year}
-              </p>
-              <ul className="space-y-2">
-                {items.map((issue) => (
-                  <li key={issue.label}>
-                    {issue.pdf ? (
-                      <button
-                        onClick={() => setViewing(viewing?.label === issue.label ? null : issue)}
-                        className="underline hover:opacity-75 transition text-left"
-                        style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}
-                      >
-                        › {issue.label}
-                      </button>
-                    ) : (
-                      <span style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
-                        › {issue.label}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+          {Object.entries(issues).map(([year, items]) => {
+            const activeIssue = items.find(i => i.label === viewing?.label) || null;
+            return (
+              <div
+                key={year}
+                className={`p-4 ${activeIssue ? 'w-full' : 'w-[180px]'}`}
+                style={{ border: '1px solid #bbaf9e', borderRadius: '2px', backgroundColor: 'rgba(255,255,255,0.3)' }}
+              >
+                <p className="font-bold mb-3" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', color: '#432616' }}>
+                  {year}
+                </p>
+                <ul className="space-y-2">
+                  {items.map((issue) => (
+                    <li key={issue.label}>
+                      {issue.pdf ? (
+                        <button
+                          onClick={() => setViewing(viewing?.label === issue.label ? null : issue)}
+                          className="underline hover:opacity-75 transition text-left"
+                          style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}
+                        >
+                          › {issue.label}
+                        </button>
+                      ) : (
+                        <span style={{ fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
+                          › {issue.label}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
 
-        {/* Inline issue viewer */}
-        {viewing && (
-          <div className="mt-6">
-            <div className="flex items-center justify-between mb-3">
-              <p className="font-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>{viewing.label}</p>
-              <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
-            </div>
-            <iframe
-              src={`${base}${viewing.pdf}`}
-              title={viewing.label}
-              className="w-full shadow-md mb-4"
-              style={{ borderRadius: '2px', height: '900px', border: 'none' }}
-            />
-            {viewing.metadata && (
-              <div className="p-4" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
-                <p className="font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>Dublin Core Metadata</p>
-                <p className="mb-1"><strong>Title:</strong> {viewing.metadata.title}</p>
-                {viewing.metadata.subject && <p className="mb-1"><strong>Subject:</strong> {viewing.metadata.subject}</p>}
-                {viewing.metadata.creator && <p className="mb-1"><strong>Creator:</strong> {viewing.metadata.creator}</p>}
-                {viewing.metadata.language && <p className="mb-1"><strong>Language:</strong> {viewing.metadata.language}</p>}
-                <p className="mb-1"><strong>Type:</strong> {viewing.metadata.type}</p>
-                <p className="mb-1"><strong>Collection:</strong> {viewing.metadata.collection}</p>
-                {viewing.metadata.citation && (
-                  <p><strong>Citation:</strong> <a href={viewing.metadata.citation} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-75" style={{ color: '#2c6e8a' }}>{viewing.metadata.citation}</a></p>
+                {activeIssue && (
+                  <div className="mt-4" ref={viewerRef}>
+                    <div className="flex items-center justify-between mb-3">
+                      <p className="font-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#432616' }}>{activeIssue.label}</p>
+                      <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
+                    </div>
+                    <iframe
+                      src={`${base}${activeIssue.pdf}`}
+                      title={activeIssue.label}
+                      className="w-full shadow-md mb-4"
+                      style={{ borderRadius: '2px', height: '900px', border: 'none' }}
+                    />
+                    {activeIssue.metadata && (
+                      <div className="p-4" style={{ border: '1px solid #bbaf9e', borderRadius: '2px', fontFamily: 'Crimson Text, serif', fontSize: '0.95rem', color: '#432616' }}>
+                        <p className="font-bold mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>Dublin Core Metadata</p>
+                        <p className="mb-1"><strong>Title:</strong> {activeIssue.metadata.title}</p>
+                        {activeIssue.metadata.subject && <p className="mb-1"><strong>Subject:</strong> {activeIssue.metadata.subject}</p>}
+                        {activeIssue.metadata.creator && <p className="mb-1"><strong>Creator:</strong> {activeIssue.metadata.creator}</p>}
+                        {activeIssue.metadata.language && <p className="mb-1"><strong>Language:</strong> {activeIssue.metadata.language}</p>}
+                        <p className="mb-1"><strong>Type:</strong> {activeIssue.metadata.type}</p>
+                        <p className="mb-1"><strong>Collection:</strong> {activeIssue.metadata.collection}</p>
+                        {activeIssue.metadata.citation && (
+                          <p><strong>Citation:</strong> <a href={activeIssue.metadata.citation} target="_blank" rel="noopener noreferrer" className="underline hover:opacity-75" style={{ color: '#2c6e8a' }}>{activeIssue.metadata.citation}</a></p>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
-        )}
+            );
+          })}
+        </div>
 
       </div>
 
