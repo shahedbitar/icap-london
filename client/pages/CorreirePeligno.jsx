@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PageLayout from '../components/PageLayout';
 
-const R = 'https://github.com/shahedbitar/ICAP-London/releases/download/media-assets/';
+const R = 'corriere-peligno/';
 
 const issues = {
   '1989': [
@@ -611,7 +611,7 @@ const issues = {
     },
     {
       label: 'March - April 2013',
-      pdf: 'CP_MarchApril_2013.pdf',
+      pdf: 'corriere-peligno/CP_MarchApril_2013.pdf',
       metadata: {
         title: 'March - April 2013',
         subject: 'Corriere Peligno',
@@ -623,7 +623,7 @@ const issues = {
     },
     {
       label: 'May - June 2013',
-      pdf: 'CP_MayJune_2013.pdf',
+      pdf: 'corriere-peligno/CP_MayJune_2013.pdf',
       metadata: {
         title: 'May - June 2013',
         subject: 'Corriere Peligno',
@@ -646,7 +646,7 @@ const issues = {
     },
     {
       label: 'September - October 2013',
-      pdf: 'CP_SepOct_2013.pdf',
+      pdf: 'corriere-peligno/CP_SepOct_2013.pdf',
       metadata: {
         title: 'September - October 2013',
         subject: 'Corriere Peligno',
@@ -658,7 +658,7 @@ const issues = {
     },
     {
       label: 'November - December 2013',
-      pdf: 'CP_NovDec_2013.pdf',
+      pdf: 'corriere-peligno/CP_NovDec_2013.pdf',
       metadata: {
         title: 'November - December 2013',
         type: 'Newspaper',
@@ -747,7 +747,7 @@ export default function CorreirePeligno() {
               <button onClick={() => setViewing(null)} className="text-sm underline hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', color: '#432616' }}>Close</button>
             </div>
             <iframe
-              src={viewing.pdf.startsWith('http') ? `https://docs.google.com/viewer?url=${encodeURIComponent(viewing.pdf)}&embedded=true` : `${base}${viewing.pdf}`}
+              src={`${base}${viewing.pdf}`}
               title={viewing.label}
               className="w-full shadow-md mb-4"
               style={{ borderRadius: '2px', height: '900px', border: 'none' }}
