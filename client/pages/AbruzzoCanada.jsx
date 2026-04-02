@@ -5,7 +5,7 @@ const issues = {
   '2000': [
     {
       label: 'Winter 2000',
-      pdf: 'AC_Winter2000.pdf',
+      pdf: 'abruzzo-canada/AC_Winter2000.pdf',
       metadata: {
         title: 'Winter 2000',
         creator: null,
@@ -16,7 +16,7 @@ const issues = {
     },
     {
       label: 'Summer 2000',
-      pdf: 'AC_Summer2000.pdf',
+      pdf: 'abruzzo-canada/AC_Summer2000.pdf',
       metadata: {
         title: 'Summer 2000',
         creator: 'Bella Dong',
@@ -29,7 +29,7 @@ const issues = {
   '2001': [
     {
       label: 'Winter - Spring 2001',
-      pdf: 'AC_SpringWinter2001.pdf',
+      pdf: 'abruzzo-canada/AC_SpringWinter2001.pdf',
       metadata: {
         title: 'Winter - Spring 2001',
         creator: null,
