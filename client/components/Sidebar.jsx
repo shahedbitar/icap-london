@@ -149,16 +149,26 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
                 <NavBtn key={p.label} label={p.label} indent={2} highlight={activePage === p.page} onClick={() => navigate(p.route)} />
               ))}
             </NavBtn>
-            <NavBtn label="In the Media" indent={1} onClick={() => {}} />
+            <NavBtn label="In the Media" indent={1} highlight={activePage === 'InTheMedia'} onClick={() => navigate('/media/in-the-media')} />
           </NavBtn>
 
-          <NavBtn label="People and their Stories" expandable expanded={open.People} onClick={() => toggle('People')}>
-            <NavBtn label="History" indent={1} expandable expanded={open.History} onClick={() => toggle('History')}>
-              {['Beginnings', 'Documentary', 'The Immigrant Experience', 'Contributions from the Community'].map((p) => (
-                <NavBtn key={p} label={p} indent={2} onClick={() => {}} />
+          <NavBtn label="People and their Stories" expandable expanded={open.People} highlight={activePage === 'PeopleAndStories'}
+            onClick={() => { toggle('People'); navigate('/people-and-their-stories'); }}>
+            <NavBtn label="History" indent={1} expandable expanded={open.History} highlight={activePage === 'History'}
+              onClick={() => { toggle('History'); navigate('/people-and-their-stories/history'); }}>
+              {[
+                { label: 'Beginnings', route: '/people-and-their-stories/history/beginnings' },
+                { label: 'Documentary', route: '/people-and-their-stories/history/documentary' },
+                { label: 'The Immigrant Experience', route: '/people-and-their-stories/history/immigrant-experience' },
+                { label: 'Contributions from the Community', route: '/people-and-their-stories/history/contributions' },
+              ].map((p) => (
+                <NavBtn key={p.label} label={p.label} indent={2}
+                  highlight={activePage === p.label.replace(/\s+/g, '')}
+                  onClick={() => p.route && navigate(p.route)} />
               ))}
             </NavBtn>
-            <NavBtn label="Autobiographies" indent={1} onClick={() => {}} />
+            <NavBtn label="Autobiographies" indent={1} highlight={activePage === 'Autobiographies'}
+              onClick={() => navigate('/people-and-their-stories/autobiographies')} />
           </NavBtn>
 
           <NavBtn label="Events and Association" expandable expanded={open.Events} onClick={() => toggle('Events')}>

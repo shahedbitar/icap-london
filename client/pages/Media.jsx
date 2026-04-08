@@ -19,9 +19,9 @@ export default function Media() {
       title: 'In The Media',
       image: `${base}in-the-media.png`,
       imageAlt: 'Italian-Canadians reading the newspaper',
-      description: 'News articles and press coverage featuring the Italian-Canadian community of London.',
+      description: 'Newspaper features, press profiles, and public coverage spotlighting members of London\'s Italian-Canadian community — from prominent families to celebrated figures who made their mark on the national stage.',
       linkLabel: 'View press coverage →',
-      onClick: null,
+      onClick: () => navigate('/media/in-the-media'),
     },
   ];
 
