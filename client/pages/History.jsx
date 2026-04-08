@@ -48,28 +48,7 @@ export default function History() {
           History
         </h2>
 
-        {/* Quick links */}
-        <ul className="space-y-2 mb-8">
-          {subsections.map((s) => (
-            <li key={s.id}>
-              {s.route ? (
-                <button
-                  onClick={() => navigate(s.route)}
-                  className="underline hover:opacity-75 transition text-left"
-                  style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}
-                >
-                  {s.title}
-                </button>
-              ) : (
-                <span style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-                  {s.title}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-
-        <div className="h-px mb-8" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
+        <div className="h-px mb-6" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
 
         {/* Subsection descriptions */}
         <div className="space-y-0">
