@@ -20,6 +20,7 @@ import Documentary from "./pages/Documentary";
 import ImmigrantExperience from "./pages/ImmigrantExperience";
 import Beginnings from "./pages/Beginnings";
 import Contributions from "./pages/Contributions";
+import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/people-and-their-stories/history/immigrant-experience" element={<ImmigrantExperience />} />
             <Route path="/people-and-their-stories/history/beginnings" element={<Beginnings />} />
             <Route path="/people-and-their-stories/history/contributions" element={<Contributions />} />
+            <Route path="/events" element={<Events />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

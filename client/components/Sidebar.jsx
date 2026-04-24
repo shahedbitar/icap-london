@@ -171,12 +171,10 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
               onClick={() => navigate('/people-and-their-stories/autobiographies')} />
           </NavBtn>
 
-          <NavBtn label="Events and Association" expandable expanded={open.Events} onClick={() => toggle('Events')}>
-            <NavBtn label="ICAP Events" indent={1} expandable expanded={open.ICAPEvents} onClick={() => toggle('ICAPEvents')}>
-              {['Events in London', 'Events in Canada'].map((p) => (
-                <NavBtn key={p} label={p} indent={2} onClick={() => {}} />
-              ))}
-            </NavBtn>
+          <NavBtn label="Events and Association" expandable expanded={open.Events} highlight={activePage === 'Events'}
+            onClick={() => { toggle('Events'); navigate('/events'); }}>
+            <NavBtn label="ICAP Events" indent={1} onClick={() => navigate('/events')} />
+            <NavBtn label="Events in London" indent={1} onClick={() => navigate('/events')} />
             <NavBtn label="Associations" indent={1} onClick={() => {}} />
           </NavBtn>
 

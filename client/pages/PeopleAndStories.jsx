@@ -52,11 +52,38 @@ export default function PeopleAndStories() {
                   {s.linkLabel}
                 </button>
               </div>
-              {i < sections.length - 1 && (
-                <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
-              )}
+              <div className="h-px" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
             </div>
           ))}
+
+          {/* Religious Life */}
+          <div className="py-6">
+            <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', color: '#432616' }}>
+              Religious Life
+            </h3>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <figure className="flex-1 text-center">
+                <img
+                  src={`${base}religiousLife/Madonna_ReligiousLife.jpg`}
+                  alt="Madonna del Carmine Festa"
+                  className="w-full object-cover rounded shadow-md"
+                />
+                <figcaption className="mt-2 text-sm italic" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
+                  Madonna del Carmine Festa – July 16
+                </figcaption>
+              </figure>
+              <figure className="flex-1 text-center">
+                <img
+                  src={`${base}religiousLife/SanRocco_religious_life.jpg`}
+                  alt="San Rocco Confessore - Carpinone, Molise"
+                  className="w-full object-cover rounded shadow-md"
+                />
+                <figcaption className="mt-2 text-sm italic" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
+                  San Rocco Confessore – Carpinone, Molise
+                </figcaption>
+              </figure>
+            </div>
+          </div>
         </div>
 
       </div>

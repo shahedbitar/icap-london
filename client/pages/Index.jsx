@@ -54,7 +54,7 @@ export default function Index() {
         style={{ background: 'linear-gradient(to right, #432616, #5a3d28, #432616)', borderColor: '#5a3d28', borderStyle: 'double', zIndex: 10 }}
       >
         <p className="script-font mb-1" style={{ color: 'rgba(219,209,198,1)', textShadow: '1px 1px 3px rgba(0,0,0,1)' }}>
-          Explore our heritage through historical documents, photos and records
+          Explore our heritage through interviews, photos and records
         </p>
         <img
           src="https://cdn.builder.io/api/v1/image/assets%2Fddec25cc54e94f77878a49c8b0ea7d6c%2Fd31cc4bf021a489cbf71065086150e84?format=webp&width=800&height=1200"
@@ -65,13 +65,6 @@ export default function Index() {
         <p className="mb-2 text-sm md:text-lg" style={{ fontFamily: 'Crimson Text, serif', color: '#bbaf9e', fontWeight: 500, letterSpacing: '2px' }}>
           Preserving the history of London's Italian Canadians
         </p>
-        <button
-          className="font-bold px-6 py-2 rounded transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-sm"
-          style={{ backgroundColor: '#371e10', color: '#ffffff', border: '4px double rgba(78,48,32,1)', fontFamily: 'Helvetica, sans-serif' }}
-          onClick={() => document.getElementById('explore-sidebar').scrollIntoView({ behavior: 'smooth' })}
-        >
-          Browse Archives
-        </button>
       </div>
 
       {/* Main Content */}
@@ -92,7 +85,7 @@ export default function Index() {
               </p>
               <div className="h-px my-4" style={{ background: 'linear-gradient(to right, transparent, #c4943e, transparent)' }} />
               <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-                ICAP London is working in partnership with the <a href="#" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Italian-Canadian Archives Project</a>.
+                ICAP London is working in partnership with the <a href="https://www.google.com/search?q=Italian-Canadian+Archives+Project.&rlz=1C5CHFA_enCA852CA852&oq=Italian-Canadian+Archives+Project.&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIICAEQABgWGB4yCAgCEAAYFhgeMgcIAxAAGO8FMgcIBBAAGO8FMgcIBRAAGO8FMgcIBhAAGO8F0gEHMTMyajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="_blank" rel="noopener noreferrer" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Italian-Canadian Archives Project</a>.
               </p>
             </div>
 
@@ -102,7 +95,7 @@ export default function Index() {
                 Our Site
               </h3>
               <p className="leading-relaxed mb-4" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
-                We are using the ICAP London site to gather stories from our region. Our site provides the <a href="#" className="underline font-semibold transition hover:opacity-75" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#2c6e8a' }}>Internet Forms</a> which you may open and print.
+                We are using the ICAP London site to gather stories from our region.
               </p>
               <p className="leading-relaxed" style={{ fontFamily: 'Crimson Text, serif', fontSize: '1rem', color: '#432616' }}>
                 We are here to listen and help preserve your family stories. Since 2001, the ICAP London office is actively working with local communities to interview and record life stories of Italian-Canadians, especially seniors. We welcome any individual, document, picture or artifact that you might want to archive for accessibility and future research through our databases.
