@@ -169,13 +169,18 @@ export default function Sidebar({ activePage, initialOpen = {} }) {
             </NavBtn>
             <NavBtn label="Autobiographies" indent={1} highlight={activePage === 'Autobiographies'}
               onClick={() => navigate('/people-and-their-stories/autobiographies')} />
+            <NavBtn label="Religious Life" indent={1} highlight={activePage === 'ReligiousLife'}
+              onClick={() => navigate('/people-and-their-stories/religious-life')} />
           </NavBtn>
 
           <NavBtn label="Events and Association" expandable expanded={open.Events} highlight={activePage === 'Events'}
             onClick={() => { toggle('Events'); navigate('/events'); }}>
-            <NavBtn label="ICAP Events" indent={1} onClick={() => navigate('/events')} />
-            <NavBtn label="Events in London" indent={1} onClick={() => navigate('/events')} />
-            <NavBtn label="Associations" indent={1} onClick={() => {}} />
+            <NavBtn label="ICAP Events" indent={1} expandable expanded={open.ICAPEvents} onClick={() => toggle('ICAPEvents')}>
+              {['Events in London', 'Events in Canada'].map((p) => (
+                <NavBtn key={p} label={p} indent={2} onClick={() => navigate('/events')} />
+              ))}
+            </NavBtn>
+            <NavBtn label="Associations" indent={1} onClick={() => navigate('/events')} />
           </NavBtn>
 
           <NavBtn label="Interviews" expandable expanded={open.Interviews} onClick={() => toggle('Interviews')}>

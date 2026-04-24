@@ -20,6 +20,7 @@ import Documentary from "./pages/Documentary";
 import ImmigrantExperience from "./pages/ImmigrantExperience";
 import Beginnings from "./pages/Beginnings";
 import Contributions from "./pages/Contributions";
+import ReligiousLife from "./pages/ReligiousLife";
 import Events from "./pages/Events";
 import NotFound from "./pages/NotFound";
 
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="/people-and-their-stories/history/immigrant-experience" element={<ImmigrantExperience />} />
             <Route path="/people-and-their-stories/history/beginnings" element={<Beginnings />} />
             <Route path="/people-and-their-stories/history/contributions" element={<Contributions />} />
+            <Route path="/people-and-their-stories/religious-life" element={<ReligiousLife />} />
             <Route path="/events" element={<Events />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

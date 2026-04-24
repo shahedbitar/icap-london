@@ -3,7 +3,6 @@ import PageLayout from '../components/PageLayout';
 
 export default function PeopleAndStories() {
   const navigate = useNavigate();
-  const base = import.meta.env.BASE_URL;
 
   const sections = [
     {
@@ -17,6 +16,12 @@ export default function PeopleAndStories() {
       description: 'Personal accounts and life stories written by members of the Italian-Canadian community of London, offering first-hand perspectives on immigration, family, work, and belonging.',
       linkLabel: 'Read autobiographies →',
       onClick: () => navigate('/people-and-their-stories/autobiographies'),
+    },
+    {
+      title: 'Religious Life',
+      description: 'A glimpse into the spiritual traditions and religious celebrations that shaped the Italian-Canadian community in London, from local feast days to enduring devotions brought from the homeland.',
+      linkLabel: 'Explore religious life →',
+      onClick: () => navigate('/people-and-their-stories/religious-life'),
     },
   ];
 
@@ -56,34 +61,6 @@ export default function PeopleAndStories() {
             </div>
           ))}
 
-          {/* Religious Life */}
-          <div className="py-6">
-            <h3 className="font-bold mb-4" style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.25rem', color: '#432616' }}>
-              Religious Life
-            </h3>
-            <div className="flex flex-col sm:flex-row gap-6">
-              <figure className="flex-1 text-center">
-                <img
-                  src={`${base}religiousLife/Madonna_ReligiousLife.jpg`}
-                  alt="Madonna del Carmine Festa"
-                  className="w-full object-cover rounded shadow-md"
-                />
-                <figcaption className="mt-2 text-sm italic" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
-                  Madonna del Carmine Festa – July 16
-                </figcaption>
-              </figure>
-              <figure className="flex-1 text-center">
-                <img
-                  src={`${base}religiousLife/SanRocco_religious_life.jpg`}
-                  alt="San Rocco Confessore - Carpinone, Molise"
-                  className="w-full object-cover rounded shadow-md"
-                />
-                <figcaption className="mt-2 text-sm italic" style={{ fontFamily: 'Crimson Text, serif', color: '#5a3d28' }}>
-                  San Rocco Confessore – Carpinone, Molise
-                </figcaption>
-              </figure>
-            </div>
-          </div>
         </div>
 
       </div>
